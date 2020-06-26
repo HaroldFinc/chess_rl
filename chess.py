@@ -149,32 +149,33 @@ class chess:
         for i in range(8):
             for j in range(8):
                 #   	 	 	 	♙
-                if self.board[i,j] == 'S':
+                if self.board[i,j] == 's':
                     board[i,j] = '♚';
-                elif self.board[i,j] == 's':
+                elif self.board[i,j] == 'S':
                     board[i,j] = '♔';
-                elif self.board[i,j] == 'V':
-                    board[i,j] = '♛';
                 elif self.board[i,j] == 'v':
+                    board[i,j] = '♛';
+                elif self.board[i,j] == 'V':
                     board[i,j] = '♕';
-                elif self.board[i,j] == 'K':
-                    board[i,j] = '♜';
                 elif self.board[i,j] == 'k':
+                    board[i,j] = '♜';
+                elif self.board[i,j] == 'K':
                     board[i,j] = '♖';
-                elif self.board[i,j] == 'A':
-                    board[i,j] = '♞';
                 elif self.board[i,j] == 'a':
+                    board[i,j] = '♞';
+                elif self.board[i,j] == 'A':
                     board[i,j] = '♘';
-                elif self.board[i,j] == 'F':
-                    board[i,j] = '♝';
                 elif self.board[i,j] == 'f':
+                    board[i,j] = '♝';
+                elif self.board[i,j] == 'F':
                     board[i,j] = '♗';
-                elif self.board[i,j] == 'P':
-                    board[i,j] = '♙';
                 elif self.board[i,j] == 'p':
                     board[i,j] = '♟';
+                elif self.board[i,j] == 'P':
+                    board[i,j] = '♙';
         print("------------")
-        print(board)
+        print('\n'.join([''.join(['{:12}'.format(item) for item in row])
+                         for row in board]))
         print("------------")
 
     def algebraic_chess(self,file_path):
@@ -215,7 +216,11 @@ class Human:
         while True:
             # break if we make a legal move
             move = input("Enter coordinates i,j , k,l for your next move (i,j,k,l = 0,2,0,4)(i,j -> k,l): ")
-            i, j, k, l = move.split(',')
+            try:
+                i, j, k, l = move.split(',')
+            except ValueError:
+                continue
+
             i = int(i)
             j = int(j)
             k = int(k)
@@ -483,7 +488,7 @@ def play_game(p1, p2,chs):
     psbl = [];
     action = current_player.take_action();
     chs.move(action[0],action[1],action[2],action[3],current_player.sym);
-    #chs.draw_board()
+    chs.draw_board()
     #time.sleep(0.33);
     i=0;
     while i!=500:
@@ -507,7 +512,7 @@ def play_game(p1, p2,chs):
                 psbl = chs.checkmate_moves('S')
                 print("CHECK MATE MOVES:" + str(psbl))
                 if len(psbl) == 0:
-                    #chs.draw_board()
+                    chs.draw_board()
                     print("Game over! Winning side : Blacks!")
                     return
         else:
@@ -523,7 +528,7 @@ def play_game(p1, p2,chs):
                 psbl = chs.checkmate_moves('s')
                 print("CHECK MATE MOVES:" + str(psbl))
                 if len(psbl) == 0:
-                    #chs.draw_board()
+                    chs.draw_board()
                     print("Game over! Winning side : Whites!")
                     return
         print("i: "+str(i))
@@ -531,17 +536,17 @@ def play_game(p1, p2,chs):
         psbl = [];
         action = current_player.take_action();
         chs.move(action[0], action[1], action[2], action[3], current_player.sym);
-        #chs.draw_board()
+        chs.draw_board()
 
         print(action);
         #time.sleep(0.33);
     print("Time: "+str(time.time()-start_time));
 
-i=0
-for i in range(1000):
-    p1 = Agent('s');
-    p2 = Agent('S');
-    chs = chess();
-    play_game(p1,p2,chs);
-    chs.draw_board()
-    print("Game played: " + str(i))
+
+
+p1 = Agent('s');
+p2 = Human('S');
+#p2 = Agent('S');
+chs = chess();
+play_game(p1,p2,chs);
+chs.draw_board();

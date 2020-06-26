@@ -34,7 +34,7 @@ If you are playing, give the coordinates in the form of:
 
 i,j,k,l 
 
-where i j k and l are integers. This means that 'I wanna play the stone in i,j coordinates to k,l coordinates.'
+where i j k and l are integers. This means that 'I wanna move the stone in i,j coordinates to k,l coordinates.'
 
 
 Things that are missing:

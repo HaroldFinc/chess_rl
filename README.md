@@ -44,3 +44,6 @@ Things that are missing:
       - En passant
       
       - Reading from already played matches data
+      
+
+Note: There is no intelligence in agents yet. This is just an environment, agents takes actions randomly.

@@ -17,7 +17,7 @@ For Human-Human game:
       -Create chess environment with chs = chess()
       -Start the game by start_game(p1, p2, chs)
 
-board represented by 8x8 array. Topleft corner -> board[0][0], third line forth column -> board[2][3]
+Board represented by 8x8 array. Topleft corner -> board[0][0], third line forth column -> board[2][3]
 If you are playing, give the coordinates in the form of:
 i,j,k,l 
 where i j k and l are integers. This means that 'I wanna play the stone in i,j coordinates to k,l coordinates.'
